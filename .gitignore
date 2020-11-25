@@ -1,0 +1,56 @@
+## .gitignore file
+## Created 2020-11-25
+## Modified 2020-11-25
+
+## Logs
+log/
+logs/
+logging/
+debug/
+debugging/
+debug-logs/
+debug_logs/
+
+## Secrets
+credentials/
+private/
+secret/
+secrets/
+git-ignore/
+git_ignore/
+git-ignored/
+git_ignored/
+
+## Key files
+id_rsa
+
+# Config file patterns:
+*_config.sh
+*_config.py
+*_config.toml
+*_config.xml
+*_config.cfg
+*_config.ini
+*_config.yaml
+
+## Deployment
+deploy/
+bin/
+build/
+
+## Mutable
+mutable/
+mut/
+
+# Temporary:
+tmp/
+temp/
+temporary/
+
+## Clutter:
+.vscode/
+nppBackup/
+*.pyc
+*.~*
+
+## Romanes enut domum.

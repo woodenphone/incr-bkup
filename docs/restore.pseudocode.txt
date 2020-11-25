@@ -1,0 +1,49 @@
+restore.pseudocode.txt
+Pseudocode to work out how to do the import automatically.
+Author: Ctrl-S
+Created: 2020-11-20
+Modified: 2020-11-20
+
+
+== Basic script setup ==
+Init script meta stuff ( timestamps, strictmode, etc)
+Define fucntions
+load config (source rest-config.sh)
+Setup logfile
+Record run parameters to logfile.
+Validate config values?
+
+
+== Basic local validation of files ==
+Check for .sql.gz files to import - ?jobname.range.sql.gz?
+Check if any of the range is absent - how do i do this?
+
+
+==Validate target DB==
+Check if DB exists and connection is working.
+Fail if DB has not been created.
+Check if import user has permissions required on target DB
+Fail if permissions not granted.
+
+
+== Perform import ==
+for each table:
+	Check if DB.table exists
+	If db.table does not exist, load table definition sql.gz to create it.
+	$ dumpname.defs.sql > mysql -u"USERNAME"
+	Import rows:
+		Check if resuming - DB.table.progress.txt (primarykey integer)
+
+		Check if any ids in range already present, if so abort loudly.
+		"SELECT $primary_key WHERE ($primary_key >= $low OR $primary_key <= $high)"
+
+		Import the range .sql.gz file into the table.
+		$ dumpname.data.sql > mysql -u"USERNAME"
+
+		Record progress - DB.table.progress.txt (primarykey integer)
+	Record progress - DB.table.progress.txt (primarykey integer)
+
+
+== After import ==
+Record that run is complete.
+Record when run is complete.
